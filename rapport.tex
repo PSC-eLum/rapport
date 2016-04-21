@@ -165,13 +165,24 @@ RBF R$^{2}$ score : 0.96155168192
 
 Polynomial R$^{2}$ score : 0.553626719589
 
+Trois types de noyaux étaient testé : Lineaire, Polynomiale, et RBF. Visiblement, celui avec le RBF marche le mieux.
+
 Un tuning des parametres montre que les deux parametres intrinsique à SVM (C et gamma), optimales pour la situation, sont gamma = 0.2 et C = 36. 
 
 \includegraphics[width=\textwidth/2]{./svmselectgamma.png}
 
 \includegraphics[width=\textwidth/2]{./svmselectc.png}
 
+\includegraphics[width=\textwidth/2]{./11maysvm.png}
+
 Le temps pris pour le tuning de SVM à ce C et ce gamma était dans les environs de 45 minutes, avec un erreur de 32.8321480128. 
+
+R2 Score, C=36, Gamma= 0.2
+0.967515076885
+RMS, C=36, Gamma= 0.2
+164.404924307
+sqrt of RMS, C=36, Gamma= 0.2
+12.8220483663
 
 \subsection{Random Forest}
 Rerum necessitatibus quis voluptate enim doloribus dicta. Ut optio expedita est
