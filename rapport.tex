@@ -1,7 +1,10 @@
+% !TeX program = lualatex
+
 \documentclass[a4paper]{article}
 \usepackage[scale=0.7]{geometry}
 \usepackage[french]{babel}
 \usepackage{multicol}
+\usepackage{graphicx}
 \usepackage{fontspec}
 \defaultfontfeatures{Mapping=tex-text}
 
@@ -128,44 +131,47 @@ eveniet. Ut quia amet cum nobis optio.
 \subsection{Sélection des features}
 Un étude est fait d’abord des correlation des variables dans les données de SIRTA avec la puissance produite par les panneaux photovoltaique. Parmi les variables météos, l’irradiance a un correlation de 0.978788, et donc la suite de la prédiction est fait seulement avec l’irradiance (vrai pour random forest?).
 
-\tablename{Correlation avec P1(W)}
 \begin{tabular}{l c r}
-  Facteur & Notation & Correlation \\
-  Measured Solar Irradiance & IrrPOA(W/m2) & 0.978788 \\
-  Temperature dans l’air & T(C) & 0.394982 \\
-  Wind Speed & WS(m/s) & 0.133656 \\
-  Wind Direction & WD(deg) & -0.049585 \\
-  Solar Zenith Angle & SZA(deg) & -0.667123 \\
-  Solar Azimuth Angle & SAA(deg) & 0.040420 \\
+  Facteur & Correlation \\
+  Measured Solar Irradiance & 0.978788 \\
+  Temperature dans l’air & 0.394982 \\
+  Wind Speed & 0.133656 \\
+  Wind Direction & -0.049585 \\
+  Solar Zenith Angle & -0.667123 \\
+  Solar Azimuth Angle & 0.040420 \\
 \end{tabular}
+\tablename{ Correlation avec P1(W)}
 
 \subsection{Preprocessing de données}
 
 Les journées sont d’abord catégorisées dans plusieurs types selon les fluctuations des données, d’un moment à la prochaine, c’est à dire, comment une fonction est lisse. Pour cela, deux fonctions sont définies : MaxStep et VarStep. MaxStep calculent la maximum différence entre deux données consécutive d’une journée, VarStep la variance des différences entre deux données consécutive d’une journée. Ensuite, en appliquant un algorithme de K-Means, les jours sont catégorisées dans 3 groupes. On varie à la fin le nombre des clusters selon la performance du code suivant.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{./categoriesgraph}
-\caption{K-Means algorithme avec 3 clusters}
-\label{fig:categoriesgraph}
-\end{figure}
+
+\includegraphics[width=\textwidth/2]{./categoriesgraph.png}
+
 
 Les groupements des données est donc ajoutés et considérés comme une variable additionnelle. 
 
 Les données datetime sont aussi linearisés dans un séries de 1 et 0 pour (quels sont les categories pour random forest? Par heure / par minute?)
 
-Deux algorithmes principales étaient utilisés ensuite pour apprendre à prédire les données : Support Vector Machine (SVM) et Random Forest. 
+Deux algorithmes principales étaient utilisés ensuite pour apprendre à prédire les données : Support Vector Machine (SVM), Random Forest, et Neural Networks.
 
-L’algorithme SVM était utilisé avec trois noyaux différents - Lineaire, RBF, et polynomiale. Les résultats sont comparables à ceux de Random Forest, mais le temps pour trainer l’algorithme est considérable. La décision était donc prise de continuer avec le Random Forest. 
+Ces trois algorithmes sont ensuite evalué avec un fonctionne d'erreur quadratique, qui prend pour chaque instant, la différence entre la valeur vraie et la valeur predictée, divisée par la valeur vraie à cette instante. 
 
 \subsection{SVM}
-Linear R$\exp{2} $score
-0.958624795379
-RBF R$\exp{2}$ score
-0.96155168192
-Polynomial R$\exp{2}$ score
-0.553626719589
+Linear R$^{2} $score : 0.958624795379
 
+RBF R$^{2}$ score : 0.96155168192
+
+Polynomial R$^{2}$ score : 0.553626719589
+
+Un tuning des parametres montre que les deux parametres intrinsique à SVM (C et gamma), optimales pour la situation, sont gamma = 0.2 et C = 36. 
+
+\includegraphics[width=\textwidth/2]{./svmselectgamma.png}
+
+\includegraphics[width=\textwidth/2]{./svmselectc.png}
+
+Le temps pris pour le tuning de SVM à ce C et ce gamma était dans les environs de 45 minutes, avec un erreur de 32.8321480128. 
 
 \subsection{Random Forest}
 Rerum necessitatibus quis voluptate enim doloribus dicta. Ut optio expedita est
@@ -521,5 +527,6 @@ Ut voluptas illo quia reprehenderit et ducimus. Voluptates incidunt debitis
     numquam.
 
 \end{multicols}
+
 
 \end{document}
