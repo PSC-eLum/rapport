@@ -125,15 +125,49 @@ eveniet. Ut quia amet cum nobis optio.
 
 \begin{multicols}{2}
 
-Et est et qui omnis iste. Accusantium rerum ut eum voluptatibus molestias
-    distinctio recusandae officiis. Maiores praesentium laborum qui dolor earum
-    voluptas tempore deleniti. Quia esse et rem perspiciatis distinctio.
+\subsection{Sélection des features}
+Un étude est fait d’abord des correlation des variables dans les données de SIRTA avec la puissance produite par les panneaux photovoltaique. Parmi les variables météos, l’irradiance a un correlation de 0.978788, et donc la suite de la prédiction est fait seulement avec l’irradiance (vrai pour random forest?).
 
-Neque autem consequatur similique dolor. Sint velit quo doloremque accusamus
-    earum. Nulla enim eos rem. Doloribus explicabo rerum et quidem aliquid
-    fugiat et. Molestiae ut debitis qui quaerat ut sapiente molestiae. Odit enim
-    excepturi ad.
+\tablename{Correlation avec P1(W)}
+\begin{tabular}{l c r}
+  Facteur & Notation & Correlation \\
+  Measured Solar Irradiance & IrrPOA(W/m2) & 0.978788 \\
+  Temperature dans l’air & T(C) & 0.394982 \\
+  Wind Speed & WS(m/s) & 0.133656 \\
+  Wind Direction & WD(deg) & -0.049585 \\
+  Solar Zenith Angle & SZA(deg) & -0.667123 \\
+  Solar Azimuth Angle & SAA(deg) & 0.040420 \\
+\end{tabular}
 
+\subsection{Preprocessing de données}
+
+Les journées sont d’abord catégorisées dans plusieurs types selon les fluctuations des données, d’un moment à la prochaine, c’est à dire, comment une fonction est lisse. Pour cela, deux fonctions sont définies : MaxStep et VarStep. MaxStep calculent la maximum différence entre deux données consécutive d’une journée, VarStep la variance des différences entre deux données consécutive d’une journée. Ensuite, en appliquant un algorithme de K-Means, les jours sont catégorisées dans 3 groupes. On varie à la fin le nombre des clusters selon la performance du code suivant.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{./categoriesgraph}
+\caption{K-Means algorithme avec 3 clusters}
+\label{fig:categoriesgraph}
+\end{figure}
+
+Les groupements des données est donc ajoutés et considérés comme une variable additionnelle. 
+
+Les données datetime sont aussi linearisés dans un séries de 1 et 0 pour (quels sont les categories pour random forest? Par heure / par minute?)
+
+Deux algorithmes principales étaient utilisés ensuite pour apprendre à prédire les données : Support Vector Machine (SVM) et Random Forest. 
+
+L’algorithme SVM était utilisé avec trois noyaux différents - Lineaire, RBF, et polynomiale. Les résultats sont comparables à ceux de Random Forest, mais le temps pour trainer l’algorithme est considérable. La décision était donc prise de continuer avec le Random Forest. 
+
+\subsection{SVM}
+Linear R$\exp{2} $score
+0.958624795379
+RBF R$\exp{2}$ score
+0.96155168192
+Polynomial R$\exp{2}$ score
+0.553626719589
+
+
+\subsection{Random Forest}
 Rerum necessitatibus quis voluptate enim doloribus dicta. Ut optio expedita est
     voluptas voluptatem pariatur. Sint qui illo enim. Provident perferendis quae
     sunt eius inventore aut qui. Minima eaque omnis dicta ad aliquid dignissimos
@@ -147,6 +181,7 @@ Doloribus ullam expedita distinctio nesciunt. Officia laborum quidem placeat
     illum magni pariatur id aut. Vel molestias saepe explicabo in similique
     optio ut officiis. Libero totam aut cumque occaecati numquam quia.
 
+\subsection{Neural Network}
 Ea quia aut officiis ipsa ab suscipit quidem. Consequuntur inventore aliquam
     exercitationem eligendi sit. Explicabo doloremque aut dolores distinctio
     commodi voluptatem iure. Praesentium iusto sed quia sed. Quae nulla unde et
