@@ -181,7 +181,7 @@ Trois algorithmes principales étaient utilisés ensuite pour apprendre à préd
 
 Ces trois algorithmes sont ensuite evalué avec un fonctionne d'erreur quadratique, qui prend pour chaque instant, la différence entre la valeur vraie et la valeur predictée, divisée par la valeur vraie à cette instante. 
 
-\subsection{Développement théorique et résultats}
+\subsection{Développement théorique}
 \subsubsection{Support Vector Machines (SVM)}
 
 Support Vector Machine  est une méthode d’apprentisage supervisé, qui utilise des fonctions noyaux pour classifier ou pour régresser les données. L’algorithme fait ensuite une optimisation basé sur le produit scalaire des points dans un espace de grande dimension nommé le « feature space ». Ceci est défini selon la fonction noyau donnée. SVM est souvent utiliser dans les cas où les dimensions des données sont plus grandes que le nombre des données. Bien que ceci ne soit pas le cas pour la prévision de la production, le choix d’utiliser SVM dans la prévision vient de la possibilité de customisation les noyaux permettant un contrôle plus fine du problème. 
@@ -196,12 +196,7 @@ Polynomial R$^{2}$ score : 0.553626719589
 
 L'algorithme RBF a deux paramètres intrinsèques au problème, C et gamma. C permets un contrôle du lissage de la frontière de la décision, tandis que gamma contrôle l’influence d’un donnée individu. 
 
-Un tuning des paramètres montre que la configuration des paramètres optimales pour la situation, sont gamma = 0.2 et C = 36.
-
-
-\includegraphics[width=0.45\textwidth]{./images/svmselectgamma.png}
-
-\includegraphics[width=0.45\textwidth]{./images/svmselectc.png}
+Un tuning des paramètres montre que la configuration des paramètres optimales pour la situation, sont gamma = 0.2 et C = 36. La démarche est expliqué en détail dans l'annexe. 
 
 \includegraphics[width=0.45\textwidth]{./images/11maysvm.png}
 
@@ -303,6 +298,13 @@ reiciendis. Magnam quidem fuga possimus nihil reiciendis sapiente dolorum quo.
 Repellendus doloremque velit non qui cum.
 
 \end{multicols}
+
+\subsection{Résultats}
+Omnis consequatur veniam consequuntur odio atque cum maiores molestiae. Suscipit
+explicabo voluptatem voluptates dolores excepturi. Iste voluptatem omnis qui
+inventore explicabo sed incidunt. Dolor autem vitae rerum vel commodi
+reiciendis. Magnam quidem fuga possimus nihil reiciendis sapiente dolorum quo.
+Repellendus doloremque velit non qui cum.
 
 \clearpage
 \section{Prédiction de la consommation}
@@ -527,11 +529,6 @@ Ut voluptas illo quia reprehenderit et ducimus. Voluptates incidunt debitis
 
 \begin{multicols}{2}
 
-Provident dolor expedita at. Rem ut facilis quia earum rerum. Odio sint
-    molestias voluptatem officia dicta est repellendus consequatur. Omnis porro
-    enim nobis aliquid at. Totam praesentium est non ut numquam quos quas. Aut
-    enim explicabo quidem nisi pariatur iure.
-
 Aut ea distinctio culpa. Qui hic magnam possimus cum consequatur earum. Rem
     magnam blanditiis rerum et ex consequatur ut quia. Sapiente non expedita
     sit.
@@ -575,5 +572,19 @@ Ut voluptas illo quia reprehenderit et ducimus. Voluptates incidunt debitis
 
 \end{multicols}
 
+\clearpage
+
+\section{Annexe}
+
+\subsection{SVM - Selection des paramètres}
+\begin{multicols}{2}
+
+Le tuning de C et gamma s’est fait dans la façon suivant : gamma était d’abord fixé, et C varié, ensuite, dans la valeur de C avec le moins d’erreur, gamma était varié. Les trois meilleures valeurs de C et gamma sont ensuite choisies et mises ensemble dans les 9 configurations possibles pour trouver la configuration optimale. 
+
+\includegraphics[width=0.45\textwidth]{./images/svmselectgamma.png}
+
+\includegraphics[width=0.45\textwidth]{./images/svmselectc.png}
+
+\end{multicols}
 
 \end{document}
