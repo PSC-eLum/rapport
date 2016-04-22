@@ -76,6 +76,8 @@ Les problèmes de régression linéaire et de classification sont communs en mat
 D’autres problèmes sont aussi communs qu’inévitables : des valeurs manquantes, des bruits dans les données. Mais contrairement à ce qu’on pourrait penser, recueillir des données fidèles n’est pas le plus grand défi des analystes. Ceux-ci, lorsqu’on leur demande de citer leur plus gros obstacles, ne mentionnent la qualité des données ou leur fidélité que dans un cas sur cinq. Parmis les barrières commerciales et industrielles contre lesquelles se heurtent les entreprises employant ces méthodes, la plupart sont culturelles ou de l’ordre de la gestion pure (marketing envers les propriété privées...) plutôt que d’être liées aux données ou à la technologie. Le plus gros frein à leur diffusion est le côté novateur donc inconnu et le manque de compréhension du caractère bénéifque de celles-ci sur "les affaires". Pour les propriétés privées, le défi s’illustre par la rentabilité de la méthode sur le long-terme uniquement, alors que son implémentation s’accompagne de frais d’installation, alors que le marketing dans ce domaine lui fait encore défaut. Mais la Data Science recèle un énorme potentiel. Une étude de Ventana Research indique que seuls 12\% des manufactures employant l’analyse des données a atteint une "maturité" complète dans cette utilisation.
 \end{multicols}
 
+\clearpage
+
 \section{Enjeux et motivations}
 \begin{multicols}{2}
 \subsection{Réduire la facture énergétique}
@@ -110,7 +112,7 @@ Guidés par ces réflexions, on a pu construire des prédictions robustes et int
 \subsection{Une prédiction de la consommation intelligente}
 Le signal à prédire fournit par les capteurs possède des caractéristiques de périodicité typiques d'une consommation industrielle. En voici un tracé sur 11 jours.
 
-\includegraphics[width=\textwidth/2]{./images/traceconsom.png}
+\includegraphics[width=0.45\textwidth]{./images/traceconsom.png}
 
 La nuit, la consommation est nulle, ainsi que pendant les vacances, les weeks ends, mais pas toujours. Les heures d'ouvertures des machines sont relativement peu variables. Certaines semaines sont plus chargées que d'autres. Certains jours sont nettement moins chargés que le reste de la semaine. Parfois, les machines restent allumées la nuit. Il s'agit donc d'une production assez régulière pour être prédite, mais qui demande naturellement des précautions.
 L'approche adoptée est l'analyse de time series. On ne cherche pas à lier ce signal à d'autres grandeurs. La prédiction fera éventuellement appel à du machine learning, mais seulement avec des features artificielles élaborées au préalable, et non observées.
@@ -155,7 +157,8 @@ Et mollitia voluptas expedita eum veniam repellat consectetur. Dicta nihil
 
 \subsection{Démarche et méthodologie}
 \subsubsection{Sélection des features}
-Un étude est fait d’abord des correlation des variables dans les données de SIRTA avec la puissance produite par les panneaux photovoltaique. Parmi les variables météos, l’irradiance a un correlation de 0.978788, et donc la suite de la prédiction est fait seulement avec l’irradiance (vrai pour random forest?).
+Un étude est fait d’abord des correlation des variables dans les données de SIRTA avec la puissance produite par les panneaux photovoltaique. 
+
 
 \begin{tabular}{l c r}
   Facteur & Correlation \\
@@ -168,24 +171,22 @@ Un étude est fait d’abord des correlation des variables dans les données de 
 \end{tabular}
 \tablename{ Correlation avec P1(W)}
 
+Parmi les variables météos, l’irradiance a un correlation le plus marqué, et donc la suite de la prédiction est basé pour la plupart sur l’irradiance.
+
 \subsubsection{Preprocessing de données}
 
-Les journées sont d’abord catégorisées dans plusieurs types selon les fluctuations des données, d’un moment à la prochaine, c’est à dire, comment une fonction est lisse. Pour cela, deux fonctions sont définies : MaxStep et VarStep. MaxStep calculent la maximum différence entre deux données consécutive d’une journée, VarStep la variance des différences entre deux données consécutive d’une journée. Ensuite, en appliquant un algorithme de K-Means, les jours sont catégorisées dans 3 groupes. On varie à la fin le nombre des clusters selon la performance du code suivant.
+Les données datetime sont d'abord linearisés dans un séries de 1 et 0 pour les mois, jours, heures, et minutes. 
 
-
-\includegraphics[width=\textwidth/2]{./images/categoriesgraph.png}
-
-
-Les groupements des données est donc ajoutés et considérés comme une variable additionnelle. 
-
-Les données datetime sont aussi linearisés dans un séries de 1 et 0 pour (quels sont les categories pour random forest? Par heure / par minute?)
-
-Deux algorithmes principales étaient utilisés ensuite pour apprendre à prédire les données : Support Vector Machine (SVM), Random Forest, et Neural Networks.
+Trois algorithmes principales étaient utilisés ensuite pour apprendre à prédire les données : Support Vector Machine (SVM), Random Forest, et Neural Networks.
 
 Ces trois algorithmes sont ensuite evalué avec un fonctionne d'erreur quadratique, qui prend pour chaque instant, la différence entre la valeur vraie et la valeur predictée, divisée par la valeur vraie à cette instante. 
 
 \subsection{Développement théorique et résultats}
 \subsubsection{Support Vector Machines (SVM)}
+
+Support Vector Machine  est une méthode d’apprentisage supervisé, qui utilise des fonctions noyaux pour classifier ou pour régresser les données. L’algorithme fait ensuite une optimisation basé sur le produit scalaire des points dans un espace de grande dimension nommé le « feature space ». Ceci est défini selon la fonction noyau donnée. SVM est souvent utiliser dans les cas où les dimensions des données sont plus grandes que le nombre des données. Bien que ceci ne soit pas le cas pour la prévision de la production, le choix d’utiliser SVM dans la prévision vient de la possibilité de customisation les noyaux permettant un contrôle plus fine du problème. 
+
+Des apprentissages étaient faits avec un noyau linéaire, un noyau polynomial, et un noyau Radial Basis Function (RBF). Les résultats sont les suivants et la décision était ensuite prise de continuer avec le noyau RBF. 
 
 Linear R$^{2} $score : 0.958624795379
 
@@ -193,38 +194,38 @@ RBF R$^{2}$ score : 0.96155168192
 
 Polynomial R$^{2}$ score : 0.553626719589
 
-Trois types de noyaux étaient testé : Lineaire, Polynomiale, et RBF. Visiblement, celui avec le RBF marche le mieux.
+L'algorithme RBF a deux paramètres intrinsèques au problème, C et gamma. C permets un contrôle du lissage de la frontière de la décision, tandis que gamma contrôle l’influence d’un donnée individu. 
 
-Un tuning des parametres montre que les deux parametres intrinsique à SVM (C et gamma), optimales pour la situation, sont gamma = 0.2 et C = 36. 
+Un tuning des paramètres montre que la configuration des paramètres optimales pour la situation, sont gamma = 0.2 et C = 36.
 
-\includegraphics[width=\textwidth/2]{./images/svmselectgamma.png}
 
-\includegraphics[width=\textwidth/2]{./images/svmselectc.png}
+\includegraphics[width=0.45\textwidth]{./images/svmselectgamma.png}
 
-\includegraphics[width=\textwidth/2]{./images/11maysvm.png}
+\includegraphics[width=0.45\textwidth]{./images/svmselectc.png}
 
-Le temps pris pour le tuning de SVM à ce C et ce gamma était dans les environs de 45 minutes, avec un erreur de 32.8321480128. 
+\includegraphics[width=0.45\textwidth]{./images/11maysvm.png}
 
-R2 Score, C=36, Gamma= 0.2
-0.967515076885
-RMS, C=36, Gamma= 0.2
-164.404924307
-sqrt of RMS, C=36, Gamma= 0.2
-12.8220483663
+Le temps pris pour le tuning de SVM à cette configuration était dans les environs de 45 minutes, avec les erreurs suivants : 
+
+Quadratique erreur relative : 32.83
+
+R2 Score : 0.9675
+
+Racine carré de RMS : 12.822
 
 \subsubsection{Random Forest}
-Rerum necessitatibus quis voluptate enim doloribus dicta. Ut optio expedita est
-    voluptas voluptatem pariatur. Sint qui illo enim. Provident perferendis quae
-    sunt eius inventore aut qui. Minima eaque omnis dicta ad aliquid dignissimos
-    expedita. Illo dolor ipsa sed ut modi facere non consequatur.
+Un étape additionel de pre-processing était fait avec l'algorithme Random Forest. Le choix de ne pas utiliser ce variable en plus pour le SVM était fait en vue du temps d'apprentisage lent pour le SVM. 
 
-Accusamus qui quis est consectetur labore dolore. Dolores dolor ab similique.
-    Sunt expedita unde omnis culpa aut. Consequatur voluptas earum ipsum quam
-    unde sed nesciunt.
+Les journées sont d’abord catégorisées dans plusieurs types selon les fluctuations des données, d’un moment à la prochaine, c’est à dire, comment une fonction est lisse. Pour cela, deux fonctions sont définies : MaxStep et VarStep. MaxStep calculent la maximum différence entre deux données consécutive d’une journée, VarStep la variance des différences entre deux données consécutive d’une journée. Ensuite, en appliquant un algorithme de K-Means, les jours sont catégorisées dans 3 groupes. On varie à la fin le nombre des clusters selon la performance du code suivant.
 
-Doloribus ullam expedita distinctio nesciunt. Officia laborum quidem placeat
-    illum magni pariatur id aut. Vel molestias saepe explicabo in similique
-    optio ut officiis. Libero totam aut cumque occaecati numquam quia.
+
+\includegraphics[width=0.45\textwidth]{./images/categoriesgraph.png}
+
+
+Les groupements des données est donc ajoutés et considérés comme une variable additionnelle. 
+
+
+
 
 \subsubsection{Neural Network}
 Ea quia aut officiis ipsa ab suscipit quidem. Consequuntur inventore aliquam
