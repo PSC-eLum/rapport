@@ -52,83 +52,109 @@ Ut et reprehenderit voluptas consequatur eum magnam. Debitis eos accusantium
 
 \tableofcontents
 \clearpage
-
-\section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
+\section{Optimisation de la consommation énergétique à l’aide de l’analyse de données : dernières tendances}
+
 
 \begin{multicols}{2}
+\subsection{Contexte général de l'étude}
+Depuis quelques années, les techniques d’apprentissage automatique - ou Machine Learning, et d’analyse de données se sont largement répandues, dans des domaines variés : de l’économie à la physque, de la prise de décision dans le milieu de l’entreprise aux voitures automatiques. Les applications sont mutliples. Mais l’un des domaines les plus prometteurs dans lesquels l’analyse de données peut se réveler révolutionnaire est l’optimisation de la consommation énergétique. Puisque la demande énergétique de nos sociétés s’est considérablement accrue dans les dernières décennies, le carctère crucial d’une telle optimisation s’est affirmée avec encore plus de force. Cela explique la profusion des travaux scientifiques dans ce champs, d’autant plus que la "data science" est prometteuse aussi bien par ses perspectives économiques que par son efficacité face aux prolèmes d’optimisation actuels.
 
-Quaerat doloremque dolorum labore. Dolores explicabo sint dolorem consequatur
-    distinctio. Totam voluptatem architecto quam. Aut ipsa velit occaecati
-    cumque numquam quia. Ut voluptas enim consequatur cupiditate quo et.
-    Possimus voluptatem voluptates repellat eum.
+\subsection{Recueillir les données}
+L’analyse de données nous fournit un regard nouveau sur nos consommations énergétiques domestique et industrielle. Les avancées techonologiques en matière de mesures ont tout particulièrment facilité la collection de données sur des durées étendues. On pourrait citer les interval meters data pour illustrer ce propos.
 
-Aut autem nam qui rerum. Eum qui voluptatem illum eaque non voluptas saepe
-    adipisci. Sapiente rem voluptas voluptatibus qui sed ducimus. Eos quas sint
-    harum rerum alias voluptate.
+\subsection{L’entreprise}
 
-In nisi doloribus possimus est. Autem et quia aliquid aperiam qui quae qui
-    repellat. Veritatis nostrum labore est dolores. Repellat sunt et officiis ut
-    dolorem vel. Necessitatibus velit occaecati tempore et et deserunt expedita.
-    Laudantium consequuntur voluptas quia delectus alias labore sed.
+Les entreprises s’intéressant à ce domaine sont de plus en plus nombreuses. Depuis 2010, FirstFuel a conduit des milliers de ces analyses. IBM a lancé le software IBM TRIRIGA Energy Optimization destiné à réduire la consommation de certaines organisations en les accompagnant depuis le lancement. Une autre enreprise, Stem Inc., utilise du big data, des analyses prédictives, du cloud computing et du stockage d’énergie pour réduire l’amplitude des pics de consommation, réduire les factures électriques et supprimer la dépendance aux nouvelles industries.
+Locas, une entreprise spécialisée dans les logiciels d’analyse de données, se consacre à employer ses talents pour trouver de nouvelles méthodes d’optimisation énergétique, particulièrement à l’aide de panneaux photovoltaïque. Elle a aussi développé un moteur de prédiction couplé à son produit Virtual Irradiance, qui sépare une image envoyée par un satellite en quatre signaux reconnus par le software comme quatre imageries différentes (la couverture nuageuse, les turbulences atmosphériques...). Ce moteur met ensuite en oeuvre ses algorithmes pour calculer son régime d’utilisation optimal à n’importe quel moment ultérieur.
 
-Consequatur explicabo et ullam mollitia aut amet sed voluptatem. In quod id
-    aperiam repellendus voluptas in atque nulla. Consequatur dolorem et magni id
-    officia. Minus suscipit aperiam voluptatem animi et earum. Hic quasi
-    voluptas modi. Possimus sint consectetur maxime voluptatem voluptatibus
-    possimus.
+\subsection{Théories}
 
-Minima suscipit sint est ea. Et quibusdam sint deleniti est incidunt
-    reprehenderit maiores. Harum rerum in saepe quo velit possimus. Eaque dolor
-    facilis dolores autem. Dolorum ipsum sed qui. Corrupti ut alias eius.
+Les problèmes de régression linéaire et de classification sont communs en matière de rentabilité énergétique. Par exemple, la régression est utile lorsqu’on cherche à prédire la demande totale d’énergie d’un bâtiment entier dans l’heure en prenant en input la situation météorologique et d’autres données concernant l’utilisation de son espace intérieur. Ce genre de régression fait naître des perspectives d’amélioration en prenant en compte des paramètres mieux choisis, afin d’allonger la validité des prédicitons sur plusieurs heures. Les données de consommation énergétique soulèvent une kyrielle de problèmes de supervised et unsupervised learning. Ceux ci regroupent aussi bien du clustering, de la recherche d’anomalie ou des time series. Ainsi, pour un batiment donné, il est possible de rechercher des constructions "similaires" dans une base de données construite avec l’expérience. On s’attend à ce que ceux là aient une utilisation énergétique similaire. Ceci est un exemple de problème faisant appel au semi-supervised learning et de clustering. Mais la technique du Time series est employée encore plus communément en matière d’utilisation de l’énergie; deux exemples sont le monitoring and verifying (M\&V) et la prédiction des pics de demande. Monitoring signifiant les méthodes pour prévoir les demandes énergétiques d’un bâtiment précis dans des circonstances inhabituelles. Verifying (ou quantifying) les méthodes utiles afin de veiller à l’étendue de l’économie lors de réaménagement techniques ou de changements de stratégies opérationnelles. La valeur des charges liées à la demande sur une facture d’électricité est fondée sur la plus forte capacité réclamée par l’utilisateurs. Ainsi, prédire les pics de demande permet de prendre des mesures visant à lisser la consommation, et minimiser la demande en énergie durant une période donnée. De plus, chaque bâtiment est tôt ou tard soumis à des changements majeurs de configuration, tels qu’un résident déménageant, ou bien des anomalies comme le  dysfonctionnement d’un équipement. Ces changement doivent être pris en considération par les méthodes mentionnées ci-dessus.
 
-Cum et et accusantium illum qui ut laudantium molestiae. Tempora nobis et minus
-    neque voluptatem sit. Inventore cupiditate dignissimos in. Itaque soluta
-    suscipit et ut nesciunt magnam repellendus. Fugit in non est.
+\subsection{Challenges}
+D’autres problèmes sont aussi communs qu’inévitables : des valeurs manquantes, des bruits dans les données. Mais contrairement à ce qu’on pourrait penser, recueillir des données fidèles n’est pas le plus grand défi des analystes. Ceux-ci, lorsqu’on leur demande de citer leur plus gros obstacles, ne mentionnent la qualité des données ou leur fidélité que dans un cas sur cinq. Parmis les barrières commerciales et industrielles contre lesquelles se heurtent les entreprises employant ces méthodes, la plupart sont culturelles ou de l’ordre de la gestion pure (marketing envers les propriété privées...) plutôt que d’être liées aux données ou à la technologie. Le plus gros frein à leur diffusion est le côté novateur donc inconnu et le manque de compréhension du caractère bénéifque de celles-ci sur "les affaires". Pour les propriétés privées, le défi s’illustre par la rentabilité de la méthode sur le long-terme uniquement, alors que son implémentation s’accompagne de frais d’installation, alors que le marketing dans ce domaine lui fait encore défaut. Mais la Data Science recèle un énorme potentiel. Une étude de Ventana Research indique que seuls 12\% des manufactures employant l’analyse des données a atteint une "maturité" complète dans cette utilisation.
+\end{multicols}
 
-Pariatur reprehenderit animi voluptatum reiciendis nobis reprehenderit excepturi
-    qui. Repudiandae sunt laborum odio non ipsum placeat nisi. Molestiae non
-    dolor minima.
+\section{Enjeux et motivations}
+\begin{multicols}{2}
+\subsection{Réduire la facture énergétique}
+Notre Projet Scientifique Collectif s’inscrit dans la perspective du développement d’une startup dédiée à l’optimisation de la consommation électrique : eLum. Nous avons accompagné la mise en place des algorithmes servant à contrôler un système électrique composé de panneaux solaires, batteries et d’un circuit consommateur (ici, une usine). L’objectif était d’isoler intégralement ce système du reste du réseau.
+Le projet que nous avons mis en oeuvre repose sur des caractéristiques intrinsèques à l’énergie électrique :
+— le prix de l’électricité est variable au cours de la journée ;
+— le rapport des prix est de 1,6 entre le prix de jour et celui de nuit pour une petite usine consommant de 3 à 36 kWh ;
+— la production électrique d’un système de panneaux solaires est variable au cours de la journée et ne peut pas toujours couvrir les besoins instantanés de l’usine ; et
+— la consommation électrique d’une usine est similaire d’une journée à l’autre et peu sujette à des variations aléatoires de grande ampleur.
 
-Ut eveniet provident cupiditate minima unde maxime. Illum dolor animi ea
-    laboriosam. Non optio non voluptatibus excepturi voluptas. Quasi nostrum
-    occaecati quo commodi modi sint.
+\subsection{Utiliser une batterie pour optimiser les prix de l’électricité}
+Actuellement, il est seulement possible d'optimiser de façon limitée ces caractéristiques en consommant en priorité l’électricité solaire quand celle du réseau est plus chère et inversement. Nous ajoutons donc au problème une batterie dont le but est grossièrement de stocker l’énergie la nuit pour une utilisation ultérieure en journée. La production d’électricité à base de panneaux solaire est variable, nous utilisons donc le principe suivant :
+— cas où la production dépasse la consommation : stocker cette énergie gratuite dans la batterie ; et
+— cas où la production est inférieure à la consommation : puiser dans les réserves de la batterie.
+Remarque : dans le cadre de notre Projet Scientifique Collectif, on suppose qu’il est économiquement préférable d’éviter l’utilisation de l’électricité issue du réseau. Le détail de l’étude financière du coût de la batterie, des différences tarifaires entre heures pleines et heures creuses n’est donc pas menée.
 
-Fuga magnam ea dicta nihil voluptas voluptatem iste et. Temporibus odio sint
-    quo. Nostrum maiores est similique laudantium rerum vel molestiae incidunt.
-    Eum commodi architecto sint sit.
+\subsection{Prédire la consommation et la production électrique}
+La prédiction du niveau de la batterie à avoir au début de la journée de deux facteurs inconnus : la consommation et la production énergétiques sur la journée à venir.
+Par exemple, si la journée qui vient est très ensoleillée, le surplus de production électrique suffira à combler les besoins pour la fin de la journée, quand les panneaux ne produisent plus. Il n’est donc pas nécessaire d’utiliser le réseau électrique pour recharger la batterie pendant la nuit. A l’inverse, si la journée est prévue nuageuse, la production des panneaux solaires sera faible et ne pourra pas suffisamment recharger la batterie pour assurer le fonctionnement en fin de journée. Il faut donc charger la batterie au préalable.
+Notre objectif a donc été de créer un ensemble d’algorithmes d’apprentissage automatique (machine learning) pour prédire la consommation et la production électrique. Il se sert des données collectées par des capteurs installés au sein d’une usine marocaine par eLum. Il a fallu en premier lieu déterminer les facteurs (features) dont dépend la consommation energétique. Ensuite il a fallu s’intéresser aux facteurs, principalement météorologiques, qui influencent la production des panneaux solaires.
+La valeur ajoutée de notre travail provient de notre désir de construire une prédiction adaptative, dans le sens ou les algorithmes sont implémentés au sein d'un programme perpétuellement relancé. Cela permet, si la prédiction diverge par rapport aux valeurs relevées par les capteurs des panneaux et du réseau, de la relancer en modifiant les paramètres des modèles.
+Guidés par ces réflexions, on a pu construire des prédictions robustes et intelligentes. On a tenu à développer des algorithmes de prédiction à court terme, plus fidèles sur le moment, et à long terme, plus justes sur la journée, afin de garantir l'adaptabilité du résultat.
 
-Vel similique quas sit iusto. Ipsum nihil cumque aperiam illo atque doloribus.
-    Quo qui pariatur enim aliquid.
-
-Aut eum exercitationem officiis quia sunt alias eveniet voluptatum. Provident
-    cumque nihil explicabo libero fuga facilis mollitia aut. Odio consequatur
-    similique similique dignissimos ducimus maxime atque maiores.
-
-Blanditiis saepe et non nihil et fugit quis sit. Nulla provident aut magnam.
-    Reprehenderit consequatur id reprehenderit voluptatem occaecati voluptas.
-    Sequi aperiam dolore et totam et. Alias deleniti accusantium minima odit et
-    ad.
-
-Quas optio est corporis. In illo culpa itaque enim provident. Id voluptas minima
-    quo delectus explicabo sunt.
-
-Minus aperiam ut incidunt quam. Aut placeat est consectetur. Quia sit eum amet
-    rerum officiis. Magni assumenda dicta numquam debitis corrupti. Ut tempore
-    vel est occaecati fugit. Consequatur excepturi accusamus aut consectetur
-    nisi aliquid quae in.
-
-Dolor corrupti et modi cum. Tenetur earum in possimus qui esse aut doloremque
-eveniet. Ut quia amet cum nobis optio.
 
 \end{multicols}
 
 \clearpage
+
+\addcontentsline{toc}{section}{L'étude}
+\section{Objectifs et composantes}
+\begin{multicols}{2}
+\subsection{Une prédiction de la consommation intelligente}
+Le signal à prédire fournit par les capteurs possède des caractéristiques de périodicité typiques d'une consommation industrielle. En voici un tracé sur 11 jours.
+
+\includegraphics[width=\textwidth/2]{./images/traceconsom.png}
+
+La nuit, la consommation est nulle, ainsi que pendant les vacances, les weeks ends, mais pas toujours. Les heures d'ouvertures des machines sont relativement peu variables. Certaines semaines sont plus chargées que d'autres. Certains jours sont nettement moins chargés que le reste de la semaine. Parfois, les machines restent allumées la nuit. Il s'agit donc d'une production assez régulière pour être prédite, mais qui demande naturellement des précautions.
+L'approche adoptée est l'analyse de time series. On ne cherche pas à lier ce signal à d'autres grandeurs. La prédiction fera éventuellement appel à du machine learning, mais seulement avec des features artificielles élaborées au préalable, et non observées.
+Le désir de la start up Elum est davoir une bonne prédiction sur 24h.
+
+\subsection{Une prédiction de la production des panneaux solaires}
+
+
+Et aspernatur porro quis earum quia temporibus non corrupti. Omnis dolorum
+    deleniti eos nulla. Rerum eaque aut adipisci ducimus enim.
+
+Et mollitia voluptas expedita eum veniam repellat consectetur. Dicta nihil
+    temporibus est. Odit et sed temporibus officia ratione nulla labore magnam.
+    At tenetur aspernatur quod itaque quia aperiam. Explicabo nostrum soluta
+    ducimus commodi.
+
+Autem non officiis qui quos sit expedita labore ut. Quia voluptas et quo sequi
+nihil vel et. Quisquam explicabo quod rerum dolore. Doloremque reprehenderit non
+non sed consequatur autem. Dolores perferendis quidem vel adipisci quia quasi.
+
+Veniam aliquam voluptatem molestiae ullam. Modi veniam sunt explicabo voluptate
+minima laudantium esse vel. Adipisci qui culpa amet sint non dolore tempore
+voluptate.
+
+Et aspernatur porro quis earum quia temporibus non corrupti. Omnis dolorum
+    deleniti eos nulla. Rerum eaque aut adipisci ducimus enim.
+
+Et mollitia voluptas expedita eum veniam repellat consectetur. Dicta nihil
+    temporibus est. Odit et sed temporibus officia ratione nulla labore magnam.
+    At tenetur aspernatur quod itaque quia aperiam. Explicabo nostrum soluta
+    ducimus commodi.
+
+
+
+\end{multicols}
+
+\clearpage
+
 \section{Prédiction de la production}
 
 \begin{multicols}{2}
 
-\subsection{Sélection des features}
+\subsection{Démarche et méthodologie}
+\subsubsection{Sélection des features}
 Un étude est fait d’abord des correlation des variables dans les données de SIRTA avec la puissance produite par les panneaux photovoltaique. Parmi les variables météos, l’irradiance a un correlation de 0.978788, et donc la suite de la prédiction est fait seulement avec l’irradiance (vrai pour random forest?).
 
 \begin{tabular}{l c r}
@@ -142,12 +168,12 @@ Un étude est fait d’abord des correlation des variables dans les données de 
 \end{tabular}
 \tablename{ Correlation avec P1(W)}
 
-\subsection{Preprocessing de données}
+\subsubsection{Preprocessing de données}
 
 Les journées sont d’abord catégorisées dans plusieurs types selon les fluctuations des données, d’un moment à la prochaine, c’est à dire, comment une fonction est lisse. Pour cela, deux fonctions sont définies : MaxStep et VarStep. MaxStep calculent la maximum différence entre deux données consécutive d’une journée, VarStep la variance des différences entre deux données consécutive d’une journée. Ensuite, en appliquant un algorithme de K-Means, les jours sont catégorisées dans 3 groupes. On varie à la fin le nombre des clusters selon la performance du code suivant.
 
 
-\includegraphics[width=\textwidth/2]{./categoriesgraph.png}
+\includegraphics[width=\textwidth/2]{./images/categoriesgraph.png}
 
 
 Les groupements des données est donc ajoutés et considérés comme une variable additionnelle. 
@@ -158,7 +184,9 @@ Deux algorithmes principales étaient utilisés ensuite pour apprendre à prédi
 
 Ces trois algorithmes sont ensuite evalué avec un fonctionne d'erreur quadratique, qui prend pour chaque instant, la différence entre la valeur vraie et la valeur predictée, divisée par la valeur vraie à cette instante. 
 
-\subsection{SVM}
+\subsection{Développement théorique et résultats}
+\subsubsection{Support Vector Machines (SVM)}
+
 Linear R$^{2} $score : 0.958624795379
 
 RBF R$^{2}$ score : 0.96155168192
@@ -169,11 +197,11 @@ Trois types de noyaux étaient testé : Lineaire, Polynomiale, et RBF. Visibleme
 
 Un tuning des parametres montre que les deux parametres intrinsique à SVM (C et gamma), optimales pour la situation, sont gamma = 0.2 et C = 36. 
 
-\includegraphics[width=\textwidth/2]{./svmselectgamma.png}
+\includegraphics[width=\textwidth/2]{./images/svmselectgamma.png}
 
-\includegraphics[width=\textwidth/2]{./svmselectc.png}
+\includegraphics[width=\textwidth/2]{./images/svmselectc.png}
 
-\includegraphics[width=\textwidth/2]{./11maysvm.png}
+\includegraphics[width=\textwidth/2]{./images/11maysvm.png}
 
 Le temps pris pour le tuning de SVM à ce C et ce gamma était dans les environs de 45 minutes, avec un erreur de 32.8321480128. 
 
@@ -184,7 +212,7 @@ RMS, C=36, Gamma= 0.2
 sqrt of RMS, C=36, Gamma= 0.2
 12.8220483663
 
-\subsection{Random Forest}
+\subsubsection{Random Forest}
 Rerum necessitatibus quis voluptate enim doloribus dicta. Ut optio expedita est
     voluptas voluptatem pariatur. Sint qui illo enim. Provident perferendis quae
     sunt eius inventore aut qui. Minima eaque omnis dicta ad aliquid dignissimos
@@ -198,7 +226,7 @@ Doloribus ullam expedita distinctio nesciunt. Officia laborum quidem placeat
     illum magni pariatur id aut. Vel molestias saepe explicabo in similique
     optio ut officiis. Libero totam aut cumque occaecati numquam quia.
 
-\subsection{Neural Network}
+\subsubsection{Neural Network}
 Ea quia aut officiis ipsa ab suscipit quidem. Consequuntur inventore aliquam
     exercitationem eligendi sit. Explicabo doloremque aut dolores distinctio
     commodi voluptatem iure. Praesentium iusto sed quia sed. Quae nulla unde et
@@ -367,19 +395,26 @@ consectetur labore. Sed at rem occaecati aut ullam dolorem quae.
 \end{multicols}
 
 \clearpage
-\section*{Conclusions}
 \addcontentsline{toc}{section}{Conclusions}
+\section{Recommandations pour des études futures}
 
 \begin{multicols}{2}
+Aut ea distinctio culpa. Qui hic magnam possimus cum consequatur earum. Rem
+    magnam blanditiis rerum et ex consequatur ut quia. Sapiente non expedita
+    sit.
+    
+\end{multicols}
 
+\section{Difficultés rencontrées}
+\begin{multicols}{2}
 Provident dolor expedita at. Rem ut facilis quia earum rerum. Odio sint
     molestias voluptatem officia dicta est repellendus consequatur. Omnis porro
     enim nobis aliquid at. Totam praesentium est non ut numquam quos quas. Aut
     enim explicabo quidem nisi pariatur iure.
+\end{multicols}
+\section{Bilan critique des résultats}
+\begin{multicols}{2}
 
-Aut ea distinctio culpa. Qui hic magnam possimus cum consequatur earum. Rem
-    magnam blanditiis rerum et ex consequatur ut quia. Sapiente non expedita
-    sit.
 
 Voluptas recusandae nisi deserunt debitis. Eos qui perspiciatis odio autem
     blanditiis quo vel. Et amet ea fugit porro unde. Voluptatum voluptatem
